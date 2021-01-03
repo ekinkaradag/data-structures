@@ -14,10 +14,10 @@ Output should be like this:
 2
 1
 Length = 4
-Index of 1 is 0
-Index of 2 is 1
-Index of 3 is 2
-Index of 4 is 3
+Index of 1 is 3
+Index of 2 is 2
+Index of 3 is 1
+Index of 4 is 0
 Index of 20 is False
 ------------------------------------
 Output:""")
