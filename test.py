@@ -4,7 +4,7 @@ import sys
 import filecmp
 
 class Test:
-        def linkedListTest(self):
+        def linkedListTest(self, keepResultFile=False):
                 resultFile = "linkedlist_result.txt"
                 customList = LinkedList()
                 customList.insertToStart(Node(2))
@@ -32,7 +32,8 @@ class Test:
                 print("Linked List Test Result: ", end="")
                 if filecmp.cmp(resultFile,"test_answer_key/linkedlist_answer_key.txt"):
                         print("PASSED")
-                        os.remove(resultFile)
+                        if not keepResultFile:
+                                os.remove(resultFile)
                 else:
                         print("FAILED")
             
