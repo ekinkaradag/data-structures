@@ -1,43 +1,42 @@
 from linked_list import *
+import os
+import sys
+import filecmp
 
 class Test:
-    def linkedListTest(self):
-        print("""
-Output should be like this:
-3
-1
-2
-3
-4
-4
-3
-2
-1
-Length = 4
-Index of 1 is 3
-Index of 2 is 2
-Index of 3 is 1
-Index of 4 is 0
-Index of 20 is False
-------------------------------------
-Output:""")
-        customList = LinkedList()
-        customList.insertToStart(Node(2))
-        customList.insertToStart(1)
-        customList.insertToEnd('3')
-        customList.insertToEnd('4')
+        def linkedListTest(self):
+                resultFile = "linkedlist_result.txt"
+                customList = LinkedList()
+                customList.insertToStart(Node(2))
+                customList.insertToStart(1)
+                customList.insertToEnd('3')
+                customList.insertToEnd('4')
 
-        print(customList.getIndexOf(2))
-        customList.printToConsole()
-        customList.reverse()
-        customList.printToConsole()
-        print('Length = ' + str(customList.length()))
-        print('Index of 1 is ' + str(customList.find(1)))
-        print('Index of 2 is ' + str(customList.find(2)))
-        print('Index of 3 is ' + str(customList.find('3')))
-        print('Index of 4 is ' + str(customList.find('4')))
+                original_stdout = sys.stdout
+                with open(resultFile, "w") as f:
+                        sys.stdout = f
 
-        print('Index of 20 is ' + str(customList.find(20)))
+                        print(customList.getIndexOf(2))
+                        customList.printToConsole()
+                        customList.reverse()
+                        customList.printToConsole()
+                        print('Length = ' + str(customList.length()))
+                        print('Index of 1 is ' + str(customList.find(1)))
+                        print('Index of 2 is ' + str(customList.find(2)))
+                        print('Index of 3 is ' + str(customList.find('3')))
+                        print('Index of 4 is ' + str(customList.find('4')))
+                        print('Index of 20 is ' + str(customList.find(20)))
+                        
+                        sys.stdout = original_stdout
+
+                print("Linked List Test Result: ", end="")
+                if filecmp.cmp(resultFile,"test_answer_key/linkedlist_answer_key.txt"):
+                        print("PASSED")
+                        os.remove(resultFile)
+                else:
+                        print("FAILED")
+            
+
 
 test = Test()
 test.linkedListTest()
