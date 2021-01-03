@@ -11,7 +11,7 @@ class LinkedList:
     def length(self):
         return self.count
 
-    def insertToStart(self, value=Node()):
+    def insertToStart(self, value):
         if type(value) is not Node:
             value = Node(value)
         
@@ -21,7 +21,7 @@ class LinkedList:
         del value
         self.count += 1
 
-    def insertToEnd(self, value=Node()):
+    def insertToEnd(self, value):
         if type(value) is not Node:
             value = Node(value)
         current = self.head
@@ -31,13 +31,6 @@ class LinkedList:
         del value
 
         self.count += 1
-
-    def printToConsole(self):
-        current = self.head
-        while current is not None:
-            if current.value is not None:
-                print(current.value)
-            current = current.link
 
     def find(self, value):
         current = self.head
@@ -49,7 +42,31 @@ class LinkedList:
             else:
                 pos += 1
                 current = current.link
-        return -1
+        return False
+    
+    def getIndexOf(self, index):
+        current = self.head
+
+        for i in range(index):
+            current = current.link
+        return current.value
+
+    def reverse(self):
+        prev = None
+        current = self.head
+        while(current is not None):
+            next = current.link
+            current.link = prev
+            prev = current
+            current = next
+        self.head = prev
+
+    def printToConsole(self):
+        current = self.head
+        while current is not None:
+            if current.value is not None:
+                print(current.value)
+            current = current.link
 
         
 
