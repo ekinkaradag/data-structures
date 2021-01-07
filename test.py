@@ -11,6 +11,7 @@ class Test:
                 customList.insertToStart(1)
                 customList.insertToEnd('3')
                 customList.insertToEnd('4')
+                customList.insertToEnd(5)
 
                 original_stdout = sys.stdout
                 with open(resultFile, "w") as f:
@@ -18,6 +19,8 @@ class Test:
 
                         print(customList.getIndexOf(2))
                         customList.printToConsole()
+                        print('----')
+                        customList.remove('4')
                         customList.reverse()
                         customList.printToConsole()
                         print('Length = ' + str(customList.length()))

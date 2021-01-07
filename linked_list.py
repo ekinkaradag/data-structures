@@ -32,6 +32,14 @@ class LinkedList:
 
         self.count += 1
 
+    def remove(self, data=None):
+        if data != None:
+            current = self.head
+            while current.value is not data:
+                current = current.link
+            current.value = current.link.value
+            current.link = current.link.link
+
     def find(self, value):
         current = self.head
         pos = 0
@@ -47,7 +55,7 @@ class LinkedList:
     def getIndexOf(self, index):
         current = self.head
 
-        for i in range(index):
+        for _ in range(index):
             current = current.link
         return current.value
 
@@ -67,9 +75,3 @@ class LinkedList:
             if current.value is not None:
                 print(current.value)
             current = current.link
-
-        
-
-
-            
-
