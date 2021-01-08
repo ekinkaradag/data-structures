@@ -17,10 +17,11 @@ class Test:
                 with open(resultFile, "w") as f:
                         sys.stdout = f
 
-                        print(customList.getIndexOf(2))
+                        print(customList.getDataByIndex(2))
                         customList.printToConsole()
                         print('----')
-                        customList.remove('4')
+                        customList.remove(data='4')
+                        customList.remove(index=customList.getIndexByData(2))
                         customList.reverse()
                         customList.printToConsole()
                         print('Length = ' + str(customList.length()))

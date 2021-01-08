@@ -1,6 +1,6 @@
 class Node:
-    def __init__(self, value=None):
-        self.value = value
+    def __init__(self, data=None):
+        self.data = data
         self.link = None
 
 class LinkedList:
@@ -11,67 +11,88 @@ class LinkedList:
     def length(self):
         return self.count
 
-    def insertToStart(self, value):
-        if type(value) is not Node:
-            value = Node(value)
+    def insertToStart(self, data):
+        if type(data) is not Node:
+            data = Node(data)
         
-        value.link = self.head
-        self.head = value
+        data.link = self.head
+        self.head = data
 
-        del value
+        del data
         self.count += 1
 
-    def insertToEnd(self, value):
-        if type(value) is not Node:
-            value = Node(value)
+    def insertToEnd(self, data):
+        if type(data) is not Node:
+            data = Node(data)
         current = self.head
-        while current.link is not None:
-            current = current.link
-        current.link = value
-        del value
-
-        self.count += 1
-
-    def remove(self, data=None):
-        if data != None:
-            current = self.head
-            while current.value is not data:
+        if self.head is None:
+            self.insertToStart(data)
+        else:
+            while current.link is not None:
                 current = current.link
-            current.value = current.link.value
+        
+            current.link = data
+            del data
+
+            self.count += 1
+
+    def remove(self, index=None, data=None):
+        if (data != None and index != None) or (data == None and index == None):
+            raise Exception('Either "data" or "index" argument should be set.')
+        else:
+            current = self.head
+            if data != None:
+                while current.data is not data:
+                    current = current.link
+            elif index != None:
+                for _ in range(index):
+                    current = current.link
+            current.data = current.link.data
             current.link = current.link.link
 
-    def find(self, value):
+
+    def find(self, data):
         current = self.head
-        pos = 0
+        position = 0
 
         while current:
-            if current.value == value:
-                return pos
+            if current.data == data:
+                return position
             else:
-                pos += 1
+                position += 1
                 current = current.link
         return False
     
-    def getIndexOf(self, index):
+    def getDataByIndex(self, index):
         current = self.head
 
         for _ in range(index):
             current = current.link
-        return current.value
+        return current.data
+
+    def getIndexByData(self, data):
+        if self.head is None:
+            return False
+        current = self.head
+        index = 0
+        while current.data is not data:
+            current = current.link
+            index += 1
+        return index
 
     def reverse(self):
-        prev = None
+        previous = None
         current = self.head
         while(current is not None):
             next = current.link
-            current.link = prev
-            prev = current
+            current.link = previous
+            previous = current
             current = next
-        self.head = prev
+        self.head = previous
 
     def printToConsole(self):
         current = self.head
         while current is not None:
-            if current.value is not None:
-                print(current.value)
+            if current.data is not None:
+                print(current.data)
             current = current.link
