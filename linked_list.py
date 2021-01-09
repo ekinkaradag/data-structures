@@ -101,7 +101,7 @@ class LinkedList:
             raise Exception("LinkedList object needs to be passed as an argument.")
         else:
             # Clear the current LinkedList
-            while self.size() is not 0:
+            while self.size() != 0:
                 self.remove(index=0)
             for i in range(obj.size()):
                 self.insertToEnd(obj.getDataByIndex(i))
