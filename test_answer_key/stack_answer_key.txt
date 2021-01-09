@@ -1,0 +1,6 @@
+3
+2
+2
+----
+Copied Stack is empty = False
+Copied Stack's top element = 2

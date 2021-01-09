@@ -15,7 +15,7 @@
 5
 3
 1
-Length = 3
+Size = 3
 Index of 1 is 2
 Index of 2 is False
 Index of 3 is 1

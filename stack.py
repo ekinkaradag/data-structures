@@ -4,9 +4,6 @@ class Stack:
     def __init__(self):
         self.__linkedList = LinkedList()
 
-    def size(self):
-        return self.__linkedList.size()
-
     def isEmpty(self):
         return self.__linkedList.isEmpty()
 
@@ -14,8 +11,7 @@ class Stack:
         self.__linkedList.insertToStart(data)
 
     def top(self):
-        length = self.__linkedList.size()
-        if length > 0:
+        if not self.isEmpty():
             return self.__linkedList.getDataByIndex(0)
         else:
             raise Exception('Stack does not have any data.')
@@ -33,10 +29,7 @@ class Stack:
             raise Exception("Stack object needs to be passed as an argument.")
         else:
             # Clear the current Stack
-            while self.size() is not 0:
+            while self.__linkedList.size() is not 0:
                 self.pop(get=printProcess)
-            for i in range(obj.size()):
-                self.__linkedList.insertToEnd(obj.stack.getDataByIndex(i))
-
-    def printToConsole(self):
-        self.__linkedList.printToConsole()
+            for i in range(obj.__linkedList.size()):
+                self.__linkedList.insertToEnd(obj.__linkedList.getDataByIndex(i))
