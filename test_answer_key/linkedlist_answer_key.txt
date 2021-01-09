@@ -1,4 +1,11 @@
 3
+----
+1
+2
+3
+4
+5
+----
 1
 2
 3
@@ -8,9 +15,10 @@
 5
 3
 1
-Length = 5
+Length = 3
 Index of 1 is 2
 Index of 2 is False
 Index of 3 is 1
 Index of 4 is False
+Index of 5 is 0
 Index of 20 is False

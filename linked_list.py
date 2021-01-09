@@ -8,8 +8,11 @@ class LinkedList:
         self.head = None
         self.count = 0
 
-    def length(self):
+    def size(self):
         return self.count
+
+    def isEmpty(self):
+        return self.size() == 0
 
     def insertToStart(self, data):
         if type(data) is not Node:
@@ -49,6 +52,7 @@ class LinkedList:
                     current = current.link
             current.data = current.link.data
             current.link = current.link.link
+            self.count -= 1
 
 
     def find(self, data):
@@ -65,10 +69,12 @@ class LinkedList:
     
     def getDataByIndex(self, index):
         current = self.head
-
-        for _ in range(index):
-            current = current.link
-        return current.data
+        if not self.isEmpty():
+            for _ in range(index):
+                current = current.link
+            return current.data
+        else:
+            raise Exception("The LinkedList is empty")
 
     def getIndexByData(self, data):
         if self.head is None:
@@ -89,6 +95,17 @@ class LinkedList:
             previous = current
             current = next
         self.head = previous
+
+    def hardCopyUsing(self, obj):
+        if type(obj) is not LinkedList:
+            raise Exception("LinkedList object needs to be passed as an argument.")
+        else:
+            # Clear the current LinkedList
+            while self.size() is not 0:
+                self.remove(index=0)
+            for i in range(obj.size()):
+                self.insertToEnd(obj.getDataByIndex(i))
+            
 
     def printToConsole(self):
         current = self.head
