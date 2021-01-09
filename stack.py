@@ -2,30 +2,30 @@ from linked_list import LinkedList
 
 class Stack:
     def __init__(self):
-        self.stack = LinkedList()
+        self.__linkedList = LinkedList()
 
     def size(self):
-        return self.stack.size()
+        return self.__linkedList.size()
 
     def isEmpty(self):
-        return self.stack.isEmpty()
+        return self.__linkedList.isEmpty()
 
     def push(self, data):
-        self.stack.insertToStart(data)
+        self.__linkedList.insertToStart(data)
 
     def top(self):
-        length = self.stack.size()
+        length = self.__linkedList.size()
         if length > 0:
-            return self.stack.getDataByIndex(0)
+            return self.__linkedList.getDataByIndex(0)
         else:
             raise Exception('Stack does not have any data.')
 
     def pop(self, get=True):
         if get is False:
-            self.stack.remove(index=0)
+            self.__linkedList.remove(index=0)
         else:
-            data = self.stack.getDataByIndex(0)
-            self.stack.remove(index=0)
+            data = self.__linkedList.getDataByIndex(0)
+            self.__linkedList.remove(index=0)
             return data
 
     def hardCopyUsing(self, obj, printProcess=True):
@@ -36,7 +36,7 @@ class Stack:
             while self.size() is not 0:
                 self.pop(get=printProcess)
             for i in range(obj.size()):
-                self.stack.insertToEnd(obj.stack.getDataByIndex(i))
+                self.__linkedList.insertToEnd(obj.stack.getDataByIndex(i))
 
     def printToConsole(self):
-        self.stack.printToConsole()
+        self.__linkedList.printToConsole()
