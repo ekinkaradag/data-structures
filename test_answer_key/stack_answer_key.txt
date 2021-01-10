@@ -4,3 +4,7 @@
 ----
 Copied Stack is empty = False
 Copied Stack's top element = 2
+----
+5
+5
+4
