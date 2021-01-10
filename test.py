@@ -4,6 +4,12 @@ import os
 import sys
 import filecmp
 
+class bcolors:
+        GREEN = '\033[92m'
+        RED = '\033[91m'
+        ENDC = '\033[0m'
+        BOLD = '\033[1m'
+
 class Test:
         def linkedListTest(self, keepResultFile=False):
                 resultFile = "linkedlist_result.txt"
@@ -19,7 +25,7 @@ class Test:
                         customList.insertToEnd('4')
                         customList.insertToEnd(5)
 
-                        print(customList.getDataByIndex(2))
+                        print(customList.getElementByIndex(2))
                         print('----')
                         customList.printToConsole()
                         print('----')
@@ -27,8 +33,7 @@ class Test:
                         customList2.hardCopyUsing(customList)
                         customList2.printToConsole()
                         print("----")
-                        customList.remove(data='4')
-                        customList.remove(index=customList.getIndexByData(2))
+                        customList.remove(element='4')
                         customList.reverse()
                         customList.printToConsole()
                         print('Size = ' + str(customList.size()))
@@ -38,16 +43,20 @@ class Test:
                         print('Index of 4 is ' + str(customList.find('4')))
                         print('Index of 5 is ' + str(customList.find(5)))
                         print('Index of 20 is ' + str(customList.find(20)))
+                        print("----")
+                        customList3 = LinkedList([0,1,2,3,4,5,6,7,8,9])
+                        customList3.printToConsole()
+                        
 
                         sys.stdout = original_stdout
 
                 print("Linked List Test Result: ", end="")
                 if filecmp.cmp(resultFile,"test_answer_key/linkedlist_answer_key.txt"):
-                        print("PASSED")
+                        print(bcolors.GREEN + bcolors.BOLD + "PASSED" + bcolors.ENDC)
                         if not keepResultFile:
                                 os.remove(resultFile)
                 else:
-                        print("FAILED")
+                        print(bcolors.RED + bcolors.BOLD + "FAILED" + bcolors.ENDC)
             
         def stackTest(self, keepResultFile=False):
                 resultFile = "stack_result.txt"
@@ -69,16 +78,22 @@ class Test:
                         st2.hardCopyUsing(st, printProcess=False)
                         print("Copied Stack is empty = " + str(st2.isEmpty()))
                         print("Copied Stack's top element = " + str(st2.top()))
+                        print("----")
+                        st3 = Stack([0,1,2,3,4,5])
+                        print(st3.top())
+                        print(st3.pop())
+                        print(st3.top())
+                        
 
                         sys.stdout = original_stdout
 
                 print("Stack Test Result: ", end="")
                 if filecmp.cmp(resultFile,"test_answer_key/stack_answer_key.txt"):
-                        print("PASSED")
+                        print(bcolors.GREEN + bcolors.BOLD + "PASSED" + bcolors.ENDC)
                         if not keepResultFile:
                                 os.remove(resultFile)
                 else:
-                        print("FAILED")
+                        print(bcolors.RED + bcolors.BOLD + "FAILED" + bcolors.ENDC)
                 
 
 test = Test()
