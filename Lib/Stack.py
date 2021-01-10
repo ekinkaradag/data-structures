@@ -1,4 +1,4 @@
-from linked_list import LinkedList
+from .LinkedList import LinkedList
 
 class Stack:
     """

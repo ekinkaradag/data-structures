@@ -1,5 +1,6 @@
-from linked_list import *
-from stack import *
+from Lib.Node import SingleLinkNode
+from Lib.LinkedList import LinkedList
+from Lib.Stack import Stack
 import os
 import sys
 import filecmp
@@ -19,7 +20,7 @@ class Test:
                         sys.stdout = f
 
                         customList = LinkedList()
-                        customList.insertToStart(Node(2))
+                        customList.insertToStart(SingleLinkNode(2))
                         customList.insertToStart(1)
                         customList.insertToEnd('3')
                         customList.insertToEnd('4')
@@ -67,8 +68,8 @@ class Test:
                         st = Stack()
                         st.push(0)
                         st.push('1')
-                        st.push(Node(2))
-                        st.push(Node('3'))
+                        st.push(SingleLinkNode(2))
+                        st.push(SingleLinkNode('3'))
 
                         print(st.pop())
                         print(st.top())

@@ -1,17 +1,4 @@
-class Node:
-    """
-    A node class to hold the data and its linked node
-
-    Attributes
-    -------
-    data : any
-        The data to be held
-    link : Node
-        Next linked node
-    """
-    def __init__(self, data=None):
-        self.data = data
-        self.link = None
+from .Node import SingleLinkNode
 
 class LinkedList:
     """
@@ -83,8 +70,8 @@ class LinkedList:
         element : any
             The element to be inserted
         """
-        if type(element) is not Node:
-            element = Node(element)
+        if type(element) is not SingleLinkNode:
+            element = SingleLinkNode(element)
         
         element.link = self.__head
         self.__head = element
@@ -100,8 +87,8 @@ class LinkedList:
         element : any
             The element to be inserted
         """
-        if type(element) is not Node:
-            element = Node(element)
+        if type(element) is not SingleLinkNode:
+            element = SingleLinkNode(element)
         current = self.__head
         if self.__head is None:
             self.insertToStart(element)
