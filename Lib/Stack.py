@@ -8,12 +8,16 @@ class Stack:
     -------
     isEmpty()
         Return whether the stack is empty or not
+
     push(element)
         Push an element to the stack
+
     top()
         Get the top element of the stack
+
     pop(get=True)
         Get the top element, and remove it from the stack
+        
     hardCopyUsing(obj, printProcess=False)
         Remove all the existing content of the current stack and replace it with another stack's content
     """

@@ -1,10 +1,48 @@
 from .Node import DoubleLinkNode
 
 class Queue:
-    def __init__(self):
+    """
+    A custom class for a queue
+
+    Methods
+    -------
+    size()
+        Returns the number of nodes that are in the queue
+
+    isEmpty()
+        Returns whether the queue is empty or not
+
+    enQueue(element)
+        Insert an element to the back of the queue
+
+    deQueue()
+        Remove the element from the beginning of the queue and get its content
+
+    front()
+        Get the data from the first node of the queue
+
+    rear()
+        Get the data from the last node of the queue
+        
+    printToConsole()
+        Print out the contents of the queue to the console
+    """
+
+    def __init__(self, orderedList=[]):
+        """If initialized using a list, elements will be added to the queue in the same order
+
+        Parameters
+        ----------
+        orderedList : list, optional
+            The queue will be populated using this list
+        """
         self.__head = None
         self.__tail = None
         self.__count = 0
+
+        if len(orderedList) != 0:
+            for i in range(len(orderedList)-1, -1, -1):
+                self.enQueue(orderedList[i])
 
     def size(self):
         """Get the number of nodes in the queue
@@ -50,13 +88,6 @@ class Queue:
     def deQueue(self):
         """Remove the element from the beginning of the queue and get its content
 
-        Parameters
-        -------
-        index : int
-            The index of the Node that is going to be removed
-        element : any
-            The element that is going to be removed
-
         Raises
         -------
         Exception
@@ -78,12 +109,12 @@ class Queue:
         Returns
         -------
         any
-            The element placed on the specified index
+            The first element in the queue
 
         Raises
         -------
         Exception
-            If the stack is empty
+            If the queue is empty
         """
         if self.__count != 0:
             return self.__head.data
@@ -96,7 +127,7 @@ class Queue:
         Returns
         -------
         any
-            The element placed on the specified index
+            The last element in the queue
 
         Raises
         -------
@@ -109,7 +140,7 @@ class Queue:
             raise Exception('Queue is empty')
 
     def printToConsole(self):
-        """Print out the current linked list to the console in order"""
+        """Print out the current queue to the console in order"""
         current = self.__head
         while current is not None:
             print(current.data)

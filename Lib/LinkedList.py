@@ -7,23 +7,32 @@ class LinkedList:
     Methods
     -------
     size()
-        Returns the number of nodes that are in the linked list
+        Return the number of nodes that are in the linked list
+
     isEmpty()
         Return whether the linked list is empty or not
+
     insertToStart(element)
         Insert an element at the beginning of the linked list
+
     insertToEnd(element)
         Insert an element at the end of the linked list
+
     remove(index=None, element=None)
         Remove the element from the linked list either by passing an index, or the element itself
+        
     find(element)
         Find the first existing element on the linked list and return it's index
+
     getElementByIndex(index)
         Return the element by passing its index as an argument
+
     reverse()
         Reverse the order of the linked list
+
     hardCopyUsing(obj, printProcess=False)
         Remove all the existing content of the current linked list and replace it with another linked list's content
+
     printToConsole()
         Print out the contents of the linked list to the console
     """
