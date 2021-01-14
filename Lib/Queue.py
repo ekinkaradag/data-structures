@@ -41,7 +41,7 @@ class Queue:
         self.__count = 0
 
         if len(orderedList) != 0:
-            for i in range(len(orderedList)-1, -1, -1):
+            for i in range(len(orderedList)):
                 self.enQueue(orderedList[i])
 
     def size(self):

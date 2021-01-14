@@ -125,6 +125,9 @@ class Test:
                         print(q.front())
                         print(q.rear())
                         q.printToConsole()
+                        print("----")
+                        q2 = Queue([0,1,2,3,4,5,6,7,8,9])
+                        q2.printToConsole()
                         
                         sys.stdout = original_stdout
 
