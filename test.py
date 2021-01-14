@@ -1,6 +1,7 @@
 from Lib.Node import SingleLinkNode
 from Lib.LinkedList import LinkedList
 from Lib.Stack import Stack
+from Lib.Queue import Queue
 import os
 import sys
 import filecmp
@@ -95,8 +96,48 @@ class Test:
                                 os.remove(resultFile)
                 else:
                         print(bcolors.RED + bcolors.BOLD + "FAILED" + bcolors.ENDC)
+
+        def queueTest(self, keepResultFile=False):
+                resultFile = "queue_result.txt"
+                original_stdout = sys.stdout
+                with open(resultFile, "w") as f:
+                        sys.stdout = f
+                        
+                        # While the queue is empty
+                        q = Queue()
+                        try:
+                                q.deQueue()
+                        except Exception as e:
+                                print(str(e))
+                        try:
+                                q.front()
+                        except Exception as e:
+                                print(str(e))
+                        print(q.size())
+                        print(q.isEmpty())
+                        q.enQueue(0)
+                        q.enQueue(1)
+                        q.enQueue(2)
+                        q.enQueue(3)
+                        print(q.size())
+                        print(q.deQueue())
+                        print(q.isEmpty())
+                        print(q.front())
+                        print(q.rear())
+                        q.printToConsole()
+                        
+                        sys.stdout = original_stdout
+
+                print("Stack Test Result: ", end="")
+                if filecmp.cmp(resultFile,"test_answer_key/queue_answer_key.txt"):
+                        print(bcolors.GREEN + bcolors.BOLD + "PASSED" + bcolors.ENDC)
+                        if not keepResultFile:
+                                os.remove(resultFile)
+                else:
+                        print(bcolors.RED + bcolors.BOLD + "FAILED" + bcolors.ENDC)
                 
 
 test = Test()
 test.linkedListTest()
 test.stackTest()
+test.queueTest()

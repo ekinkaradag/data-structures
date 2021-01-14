@@ -53,14 +53,14 @@ class LinkedList:
         return self.__count
 
     def isEmpty(self):
-        """Verify that the stack is empty
+        """Verify that the linked list is empty
 
         Returns
         -------
         bool
-            whether the stack is empty or not
+            whether the linked list is empty or not
         """
-        return self.size() == 0
+        return self.__count == 0
 
     def insertToStart(self, element):
         """Insert an element at the beginning of the linked list
@@ -133,7 +133,7 @@ class LinkedList:
 
 
     def find(self, element):
-        """Find the first existing element in the linked list and get its index.
+        """Find the first existing element in the linked list and get its index
 
         Parameters
         -------
@@ -157,7 +157,7 @@ class LinkedList:
         return False
     
     def getElementByIndex(self, index):
-        """Get the specific element from the linked list by using the specified index.
+        """Get the specific element from the linked list by using the specified index
 
         Parameters
         -------
