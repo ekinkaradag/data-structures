@@ -1,5 +1,7 @@
-from linked_list import *
-from stack import *
+from Lib.Node import SingleLinkNode
+from Lib.LinkedList import LinkedList
+from Lib.Stack import Stack
+from Lib.Queue import Queue
 import os
 import sys
 import filecmp
@@ -19,7 +21,7 @@ class Test:
                         sys.stdout = f
 
                         customList = LinkedList()
-                        customList.insertToStart(Node(2))
+                        customList.insertToStart(SingleLinkNode(2))
                         customList.insertToStart(1)
                         customList.insertToEnd('3')
                         customList.insertToEnd('4')
@@ -67,8 +69,8 @@ class Test:
                         st = Stack()
                         st.push(0)
                         st.push('1')
-                        st.push(Node(2))
-                        st.push(Node('3'))
+                        st.push(SingleLinkNode(2))
+                        st.push(SingleLinkNode('3'))
 
                         print(st.pop())
                         print(st.top())
@@ -94,8 +96,51 @@ class Test:
                                 os.remove(resultFile)
                 else:
                         print(bcolors.RED + bcolors.BOLD + "FAILED" + bcolors.ENDC)
+
+        def queueTest(self, keepResultFile=False):
+                resultFile = "queue_result.txt"
+                original_stdout = sys.stdout
+                with open(resultFile, "w") as f:
+                        sys.stdout = f
+                        
+                        # While the queue is empty
+                        q = Queue()
+                        try:
+                                q.deQueue()
+                        except Exception as e:
+                                print(str(e))
+                        try:
+                                q.front()
+                        except Exception as e:
+                                print(str(e))
+                        print(q.size())
+                        print(q.isEmpty())
+                        q.enQueue(0)
+                        q.enQueue(1)
+                        q.enQueue(2)
+                        q.enQueue(3)
+                        print(q.size())
+                        print(q.deQueue())
+                        print(q.isEmpty())
+                        print(q.front())
+                        print(q.rear())
+                        q.printToConsole()
+                        print("----")
+                        q2 = Queue([0,1,2,3,4,5,6,7,8,9])
+                        q2.printToConsole()
+                        
+                        sys.stdout = original_stdout
+
+                print("Stack Test Result: ", end="")
+                if filecmp.cmp(resultFile,"test_answer_key/queue_answer_key.txt"):
+                        print(bcolors.GREEN + bcolors.BOLD + "PASSED" + bcolors.ENDC)
+                        if not keepResultFile:
+                                os.remove(resultFile)
+                else:
+                        print(bcolors.RED + bcolors.BOLD + "FAILED" + bcolors.ENDC)
                 
 
 test = Test()
 test.linkedListTest()
 test.stackTest()
+test.queueTest()
