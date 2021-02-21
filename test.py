@@ -127,6 +127,8 @@ class Test:
                         q.printToConsole()
                         print("----")
                         q2 = Queue([0,1,2,3,4,5,6,7,8,9])
+                        print(q2.find(4))
+                        print(q2.find(10))
                         q2.printToConsole()
                         
                         sys.stdout = original_stdout

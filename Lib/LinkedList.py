@@ -140,7 +140,6 @@ class LinkedList:
             current.link = current.link.link
             self.__count -= 1
 
-
     def find(self, element):
         """Find the first existing element in the linked list and get its index
 
