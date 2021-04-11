@@ -2,6 +2,7 @@ from Lib.Node import SingleLinkNode
 from Lib.LinkedList import LinkedList
 from Lib.Stack import Stack
 from Lib.Queue import Queue
+from Lib.Tree import BinaryTree
 import os
 import sys
 import filecmp
@@ -138,9 +139,62 @@ class Test:
                                 os.remove(resultFile)
                 else:
                         print(bcolors.RED + bcolors.BOLD + "FAILED" + bcolors.ENDC)
-                
+
+        def treeTest(self, keepResultFile=False) -> None:
+                tree_result_file_name = "tree_result.txt"
+                original_stdout = sys.stdout
+
+                with open(tree_result_file_name, "w") as f:
+                        sys.stdout = f
+
+                        tree = BinaryTree()
+                        print(tree.isEmpty())
+                        tree.add(10)  # 10 is root
+                        # left
+                        tree.add(5)
+                        tree.add(7)
+                        tree.add(3)
+
+                        # right
+                        tree.add(15)
+                        tree.add(13)
+                        tree.add(17)
+
+                        print(tree.getMinValue())
+                        print(tree.getMaxValue())
+                        print(tree.isEmpty())
+
+                        tree.print()
+
+                        print("\n---Coping tree---")
+                        copy_tree = BinaryTree()
+                        tree.preOrder(lambda el: copy_tree.add(el))
+                        copy_tree.print()
+
+                        print("\n---To only right nodes--")
+                        only_right_node = BinaryTree()
+                        tree.inOrder(lambda x: only_right_node.add(x))
+                        only_right_node.print()
+
+                        print("\n---Rebalance to right tree--")
+                        rebalance_to_right_tree = BinaryTree()
+                        tree.postOrder(lambda x: rebalance_to_right_tree.add(x))
+                        rebalance_to_right_tree.print()
+
+                        sys.stdout = original_stdout
+
+                print("Tree result: ", end="")
+                filecmp.clear_cache()
+                if filecmp.cmp(tree_result_file_name, "test_answer_key/tree_answer_key.txt"):
+                        print(bcolors.GREEN + bcolors.BOLD + "PASSED" + bcolors.ENDC)
+                        if not keepResultFile:
+                            os.remove(tree_result_file_name)
+                else:
+                        print(bcolors.RED + bcolors.BOLD + "FAILED" + bcolors.ENDC)
+
 
 test = Test()
 test.linkedListTest()
 test.stackTest()
 test.queueTest()
+test.treeTest()
