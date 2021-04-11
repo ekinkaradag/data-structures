@@ -52,7 +52,6 @@ class TreeNode:
 
     def __init__(self, data, left=None, right=None) -> None:
         """
-        
         Parameters
         ----------
         data
@@ -62,11 +61,6 @@ class TreeNode:
         self.data = data
         self.left = left
         self.right = right
-
-    """
-    Method to add value to node.
-    if value > root this right subtree, else left.
-    """
 
     def add(self, value) -> bool:
         """
