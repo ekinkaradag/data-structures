@@ -37,7 +37,7 @@ class DoubleLinkNode:
 
 class TreeNode:
     """
-    A node class to hold the data, left subtree and rigth subtree
+    A node class to hold the data, left subtree and right subtree
 
      Attributes
     -------
@@ -68,27 +68,51 @@ class TreeNode:
     if value > root this right subtree, else left.
     """
 
-    def add(self, value) -> None:
+    def add(self, value) -> bool:
         """
-        
+        Add value to left node or right.
         Parameters
         ----------
         value
-
+            value to left node or right.
         Returns
         -------
-
+            true if value is added else false
         """
         if self.data == value:
-            return
+            return False
 
         if self.data > value:
             if self.left is None:
                 self.left = TreeNode(value)
+                return True
             else:
-                self.left.add(value)
+                return self.left.add(value)
         else:
             if self.right is None:
                 self.right = TreeNode(value)
+                return True
             else:
-                self.right.add(value)
+                return self.right.add(value)
+
+    def getMaxValue(self):
+        """
+        Get the rightmost subtree.
+        Returns
+        -------
+            Max value in tree
+        """
+        if self.right is None:
+            return self.data
+        return self.right.getMaxValue()
+
+    def getMinValue(self):
+        """
+        Get the leftmost subtree.
+        Returns
+        -------
+            Min value in tree.
+        """
+        if self.left is None:
+            return self.data
+        return self.left.getMinValue()
