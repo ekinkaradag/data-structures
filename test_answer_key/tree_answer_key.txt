@@ -10,7 +10,7 @@ False
 -15
 --17
 
----Coping tree---
+---Copying tree---
 --3
 -5
 --7

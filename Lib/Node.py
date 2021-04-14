@@ -6,6 +6,7 @@ class SingleLinkNode:
     -------
     data : any
         The data to be held
+
     link : Node
         Next linked node
     """
@@ -23,8 +24,10 @@ class DoubleLinkNode:
     -------
     data : any
         The data to be held
+
     firstLink : Node
         First linked node
+
     secondLink : Node
         Second linked node
     """
@@ -39,12 +42,14 @@ class TreeNode:
     """
     A node class to hold the data, left subtree and right subtree
 
-     Attributes
+    Attributes
     -------
     data : any
         The data to be held
+
     left : TreeNode
         Left subtree
+
     right : TreeNode
         Right subtree
 
@@ -54,44 +59,49 @@ class TreeNode:
         """
         Parameters
         ----------
-        data
-        left
-        right
+        data : any
+
+        left : TreeNode
+
+        right : TreeNode
         """
         self.data = data
         self.left = left
         self.right = right
 
-    def add(self, value) -> bool:
+    def add(self, element) -> bool:
         """
-        Add value to left node or right.
+        Add element to left node or right.
         Parameters
         ----------
-        value
-            value to left node or right.
+        element
+            element to left node or right.
+
         Returns
         -------
-            true if value is added else false
+        bool
+            true if element is added else false
         """
-        if self.data == value:
+        if self.data == element.data:
             return False
 
-        if self.data > value:
+        if self.data > element.data:
             if self.left is None:
-                self.left = TreeNode(value)
+                self.left = element
                 return True
             else:
-                return self.left.add(value)
+                return self.left.add(element)
         else:
             if self.right is None:
-                self.right = TreeNode(value)
+                self.right = element
                 return True
             else:
-                return self.right.add(value)
+                return self.right.add(element)
 
     def getMaxValue(self):
         """
         Get the rightmost subtree.
+
         Returns
         -------
             Max value in tree
@@ -103,6 +113,7 @@ class TreeNode:
     def getMinValue(self):
         """
         Get the leftmost subtree.
+        
         Returns
         -------
             Min value in tree.

@@ -166,7 +166,7 @@ class Test:
 
                         tree.print()
 
-                        print("\n---Coping tree---")
+                        print("\n---Copying tree---")
                         copy_tree = BinaryTree()
                         tree.preOrder(lambda el: copy_tree.add(el))
                         copy_tree.print()

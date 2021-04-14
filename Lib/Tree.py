@@ -1,4 +1,4 @@
-from Lib.Node import TreeNode
+from .Node import TreeNode
 
 
 class BinaryTree:
@@ -23,8 +23,7 @@ class BinaryTree:
         Get the leftmost subtree.
 
     preOrder(function)
-        Method for traversing a tree starting from the root and further from the left subtree followed by the right.
-        This method using to create copy of tree.
+        Do preorder tree traversal, starting from the root and further from the left subtree followed by the right.
 
         Algorithm Preorder(tree)
             1. Visit the root.
@@ -32,16 +31,16 @@ class BinaryTree:
             3. Traverse the right subtree, i.e., call preOrder(right-subtree)
 
     inOrder(function)
+        Do inorder tree traversal
         Algorithm Inorder(tree)
             1. Traverse the left subtree, i.e., call Inorder(left-subtree)
             2. Visit the root.
             3. Traverse the right subtree, i.e., call Inorder(right-subtree)
 
     postOrder(function)
-        Method for traversing the tree, starting with the leftmost child and gradually moving to the rightmost child.
-        Postorder traversal is used to delete the tree
+        Do postorder tree traversal, starting with the leftmost child and gradually moving to the rightmost child.
 
-       Algorithm Postorder(tree)
+        Algorithm Postorder(tree)
            1. Traverse the left subtree, i.e., call Postorder(left-subtree)
            2. Traverse the right subtree, i.e., call Postorder(right-subtree)
            3. Visit the root.
@@ -55,7 +54,7 @@ class BinaryTree:
 
         Parameters
         ----------
-        rootValue
+        rootValue : any
             The root value of Tree.
         """
         self.__root = None if rootValue is None else TreeNode(rootValue)
@@ -63,16 +62,18 @@ class BinaryTree:
     def isEmpty(self) -> bool:
         """
         Verify that the tree is empty.
+
         Returns
         -------
-        bool
-            true if tree is empty else false.
+        bool :
+            whether the tree is empty or not
         """
         return self.__root is None
 
     def getRoot(self):
         """
-        Get root value.
+        Get the root value.
+        
         Returns
         -------
             root value.
@@ -83,11 +84,11 @@ class BinaryTree:
 
     def getMaxValue(self):
         """
-        Get the rightmost subtree.
+        Get the value of the rightmost node in the tree.
 
         Returns
         -------
-            max value in tree.
+            maximum value in tree.
         """
         if self.__root is None:
             return None
@@ -95,11 +96,11 @@ class BinaryTree:
 
     def getMinValue(self):
         """
-        Get the leftmost subtree.
+        Get the value of the leftmost node in the tree.
 
         Returns
         -------
-            min value in tree.
+            minimum value in tree.
         """
         if self.__root is None:
             return None
@@ -107,17 +108,17 @@ class BinaryTree:
 
     def preOrder(self, function) -> None:
         """
-        Method for traversing a tree starting from the root and further from the left subtree followed by the right.
-        This method using to create copy of tree.
+        Do preorder tree traversal, starting from the root and further from the left subtree followed by the right.
 
         Algorithm Preorder(tree)
             1. Visit the root.
             2. Traverse the left subtree, i.e., call preOrder(left-subtree)
             3. Traverse the right subtree, i.e., call preOrder(right-subtree)
+
         Parameters
         ----------
-        function
-            Function with one argument to apply on each element tree.
+        function : 
+            Function with one argument to apply on each element of the tree.
         """
         current = self.__root
 
@@ -128,15 +129,15 @@ class BinaryTree:
 
     def __preOrder(self, node: TreeNode, function) -> None:
         """
-        Method for traversing a tree starting from the root and further from the left subtree followed by the right.
-        This method using to create copy of tree. This method uses a recursive approach to traverse the tree.
+        Do preorder tree traversal, starting from the root and further from the left subtree followed by the right.
 
         Parameters
         ----------
-        node
+        node : TreeNode
             current node (subtree) in tree.
-        function
-            function with one argument to apply on each element tree.
+
+        function : 
+            function with one argument to apply on each element of the tree.
         """
         if node is None:
             return
@@ -147,7 +148,8 @@ class BinaryTree:
 
     def inOrder(self, function) -> None:
         """
-        This method uses a recursive approach to traverse the tree.
+        Do inorder tree traversal
+
         Algorithm Inorder(tree)
             1. Traverse the left subtree, i.e., call Inorder(left-subtree)
             2. Visit the root.
@@ -156,7 +158,7 @@ class BinaryTree:
         Parameters
         ----------
         function
-            function with one argument to apply on each element tree.
+            function with one argument to apply on each element of the tree.
         """
         current = self.__root
 
@@ -167,12 +169,15 @@ class BinaryTree:
 
     def __inOrder(self, node: TreeNode, function) -> None:
         """
+        Do inorder tree traversal
+
         Parameters
         ----------
-        node
+        node : TreeNode
             current node (subtree) in tree.
+
         function
-            function with one argument to apply on each element tree.
+            function with one argument to apply on each element of the tree.
         """
         if node is None:
             return
@@ -183,17 +188,17 @@ class BinaryTree:
 
     def postOrder(self, function) -> None:
         """
-        Method for traversing the tree, starting with the leftmost child and gradually moving to the rightmost child.
-        Postorder traversal is used to delete the tree
+        Do postorder tree traversal, starting with the leftmost child and gradually moving to the rightmost child.
 
         Algorithm Postorder(tree)
            1. Traverse the left subtree, i.e., call Postorder(left-subtree)
            2. Traverse the right subtree, i.e., call Postorder(right-subtree)
            3. Visit the root.
+
         Parameters
         ----------
         function
-            function with one argument to apply on each element tree.
+            function with one argument to apply on each element of the tree.
         """
         current = self.__root
 
@@ -204,14 +209,15 @@ class BinaryTree:
 
     def __postOrder(self, node: TreeNode, function) -> None:
         """
-        Method for traversing the tree, starting with the leftmost child and gradually moving to the rightmost child.
-        Postorder traversal is used to delete the tree. This method uses a recursive approach to traverse the tree.
+        Do postorder tree traversal, starting with the leftmost child and gradually moving to the rightmost child.
+
         Parameters
         ----------
-        node
+        node : TreeNode
             current node (subtree) in tree.
+
         function
-            function with one argument to apply on each element tree.
+            function with one argument to apply on each element of the tree.
         """
         if node is None:
             return
@@ -220,39 +226,47 @@ class BinaryTree:
         self.__postOrder(node.right, function)
         function(node.data)
 
-    def add(self, value) -> bool:
+    def add(self, element) -> bool:
         """
-        Add element to tree.
+        Add an element to the tree.
+
         Parameters
         ----------
-        value
-            value to add in tree.
+        element : any
+            element to add to the tree.
+
         Returns
         -------
-            true if element added to tree else false.
+        bool
+            whether the element is added to tree or not
         """
+        if element is None:
+            return False
+        elif type(element) is not TreeNode:
+            element = TreeNode(element)
+
         if self.__root is None:
-            self.__root = TreeNode(value)
+            self.__root = element
             return True
 
-        if value is None:
-            return False
-
-        self.__root.add(value)
+        self.__root.add(element)
 
     def print(self) -> None:
         """
         Print out the current queue to the console in inOrder traveling.
         """
+
         self.__print(self.__root, 0)
 
     def __print(self, node, numberChildInTree) -> None:
         """
         Print out the current queue to the console in inOrder traveling.
+
         Parameters
         ----------
-        node
+        node : TreeNode
             current node (subtree) in tree.
+
         numberChildInTree
             node number in the tree to output characters to the console.
         """
@@ -260,7 +274,7 @@ class BinaryTree:
             return
 
         self.__print(node.left, numberChildInTree + 1)
-        for i in range(numberChildInTree):
+        for _ in range(numberChildInTree):
             print('-', end='')
         print(node.data)
         self.__print(node.right, numberChildInTree + 1)
