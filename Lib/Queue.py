@@ -23,6 +23,9 @@ class Queue:
 
     rear()
         Get the data from the last node of the queue
+    
+    find(element)
+        Find the first existing element in the queue and return it's index
         
     printToConsole()
         Print out the contents of the queue to the console
@@ -163,7 +166,7 @@ class Queue:
         return False
 
     def printToConsole(self):
-        """Print out the current queue to the console in order"""
+        """Print out the current queue to the console in the current order"""
         current = self.__head
         while current is not None:
             print(current.data)

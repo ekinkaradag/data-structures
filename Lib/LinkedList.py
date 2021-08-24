@@ -228,7 +228,7 @@ class LinkedList:
             
 
     def printToConsole(self):
-        """Print out the current linked list to the console in order"""
+        """Print out the current linked list to the console in the current order"""
         current = self.__head
         while current is not None:
             if current.data is not None:
