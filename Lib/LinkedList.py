@@ -140,7 +140,6 @@ class LinkedList:
             current.link = current.link.link
             self.__count -= 1
 
-
     def find(self, element):
         """Find the first existing element in the linked list and get its index
 
@@ -229,7 +228,7 @@ class LinkedList:
             
 
     def printToConsole(self):
-        """Print out the current linked list to the console in order"""
+        """Print out the current linked list to the console in the current order"""
         current = self.__head
         while current is not None:
             if current.data is not None:

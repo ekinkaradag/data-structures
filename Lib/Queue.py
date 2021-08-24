@@ -23,6 +23,9 @@ class Queue:
 
     rear()
         Get the data from the last node of the queue
+    
+    find(element)
+        Find the first existing element in the queue and return it's index
         
     printToConsole()
         Print out the contents of the queue to the console
@@ -96,12 +99,11 @@ class Queue:
         if self.__head is not None:
             current = self.__head.data 
             self.__head = self.__head.secondLink
-            self.__head.prev=None
+            self.__head.firstLink=None
             self.__count -= 1
             return current 
         else:
             raise Exception('Queue is empty')
-
 
     def front(self):
         """Get the data from the first node of the queue
@@ -138,9 +140,33 @@ class Queue:
             return self.__tail.data
         else:
             raise Exception('Queue is empty')
+    
+    def find(self, element):
+        """Find the first existing element in the queue and get its index
+
+        Parameters
+        -------
+        element : any
+            The element to be found
+
+        Returns
+        -------
+        int, bool
+            If found, returns the index of the element. If not found, returns False.
+        """
+        current = self.__head
+        position = 0
+
+        while current:
+            if current.data == element:
+                return position
+            else:
+                position += 1
+                current = current.secondLink
+        return False
 
     def printToConsole(self):
-        """Print out the current queue to the console in order"""
+        """Print out the current queue to the console in the current order"""
         current = self.__head
         while current is not None:
             print(current.data)
