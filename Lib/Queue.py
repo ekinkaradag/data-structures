@@ -139,7 +139,7 @@ class Queue:
             raise Exception('Queue is empty')
     
     def find(self, element):
-        """Find the first existing element in the linked list and get its index
+        """Find the first existing element in the queue and get its index
 
         Parameters
         -------
