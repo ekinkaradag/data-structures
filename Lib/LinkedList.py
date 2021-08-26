@@ -197,24 +197,20 @@ class LinkedList:
         self.__head = previous
 
     def hardCopyUsing(self, obj, printProcess=False):
-        """Remove all the existing content of the current linked list and replace it with another linked list's content
+        """It removes all the existing content from the current linked list and 
+        copies the contents of another linked list which is passed as an argument.
 
         Parameters
         -------
-        obj : Stack
-            This stack will copied onto the current stack
+        obj : LinkedList
+            This linked list will be copied onto the current linked list
         printProcess : bool
-            Whether to print every element that is being copied to the console
-
-        Returns
-        -------
-        element : any
-            The top element on the stack before removing it
+            Whether to print every element copied to the list in real-time
             
         Raises
         -------
         Exception
-            If the passed argument is not a Stack
+            If the passed argument is not a LinkedList type
         """
         if type(obj) is not LinkedList:
             raise Exception("LinkedList object needs to be passed as an argument.")

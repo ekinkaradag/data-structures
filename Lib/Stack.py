@@ -107,7 +107,7 @@ class Stack:
         Parameters
         -------
         obj : Stack
-            This stack will copied onto the current stack
+            This stack will be copied onto the current stack
         printProcess : bool
             Whether to print every element that is being copied to the console
 
