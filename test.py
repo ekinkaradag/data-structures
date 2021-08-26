@@ -134,7 +134,7 @@ class Test:
                         
                         sys.stdout = original_stdout
 
-                print("Stack Test Result: ", end="")
+                print("Queue Test Result: ", end="")
                 if filecmp.cmp(resultFile,"test_answer_key/queue_answer_key.txt"):
                         print(bcolors.GREEN + bcolors.BOLD + "PASSED" + bcolors.ENDC)
                         if not keepResultFile:
