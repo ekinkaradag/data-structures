@@ -124,10 +124,16 @@ class LinkedList:
         Raises
         -------
         Exception
-            If the stack is empty
+            If the linked list is empty
+        Exception
+            If both element and index arguments are passed
+        Exception
+            If no argument is passed
         """
         if (element != None and index != None) or (element == None and index == None):
             raise Exception('Either "element" or "index" argument should be set.')
+        elif(self.size() == 0):
+            raise Exception('Cannot remove an element from a linked list of size 0')
         else:
             current = self.__head
             if element != None:
@@ -136,9 +142,16 @@ class LinkedList:
             elif index != None:
                 for _ in range(index):
                     current = current.link
-            current.data = current.link.data
-            current.link = current.link.link
-            self.__count -= 1
+
+            # Remove
+            if(self.size() == 1):
+                self.__head = None
+                self.__count = 0
+            else:
+                current.data = current.link.data
+                current.link = current.link.link
+                self.__count -= 1
+
 
     def find(self, element):
         """Find the first existing element in the linked list and get its index
@@ -197,24 +210,20 @@ class LinkedList:
         self.__head = previous
 
     def hardCopyUsing(self, obj, printProcess=False):
-        """Remove all the existing content of the current linked list and replace it with another linked list's content
+        """Remove all the existing content from the current linked list and 
+        copy the contents of another linked list which is passed as an argument.
 
         Parameters
         -------
-        obj : Stack
-            This stack will copied onto the current stack
+        obj : LinkedList
+            This linked list will be copied onto the current linked list
         printProcess : bool
-            Whether to print every element that is being copied to the console
-
-        Returns
-        -------
-        element : any
-            The top element on the stack before removing it
+            Whether to print every element copied to the list in real-time
             
         Raises
         -------
         Exception
-            If the passed argument is not a Stack
+            If the passed argument is not a LinkedList type
         """
         if type(obj) is not LinkedList:
             raise Exception("LinkedList object needs to be passed as an argument.")
@@ -224,7 +233,10 @@ class LinkedList:
                 self.remove(index=0)
 
             for i in range(obj.size()):
-                self.insertToEnd(obj.getElementByIndex(i))
+                element = obj.getElementByIndex(i)
+                if(printProcess):
+                    print(element)
+                self.insertToEnd(element)
             
 
     def printToConsole(self):
