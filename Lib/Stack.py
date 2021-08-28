@@ -119,7 +119,7 @@ class Stack:
         Raises
         -------
         Exception
-            If the passed argument is not a Stack
+            If the passed argument is not a Stack type
         """
         if type(obj) is Stack:
             # Clear the current Stack

@@ -210,8 +210,8 @@ class LinkedList:
         self.__head = previous
 
     def hardCopyUsing(self, obj, printProcess=False):
-        """It removes all the existing content from the current linked list and 
-        copies the contents of another linked list which is passed as an argument.
+        """Remove all the existing content from the current linked list and 
+        copy the contents of another linked list which is passed as an argument.
 
         Parameters
         -------
